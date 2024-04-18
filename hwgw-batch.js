@@ -6,7 +6,9 @@
 // Hack: growtime - hacktime + 20
 
 export async function main(ns) {
-    ns.getPortHandle(1); // Not sure if this is needed
+    ns.getPortHandle(1); // This port connects to our daemon. Not sure if this is needed.
+    ns.getPortHandle(2); // This port connects to fetchservers.js. Not sure if this is needed.
+    
     let hacktime = ns.getHackTime(); // PH
     let growtime = hacktime * 3.2;
     let weaktime = hacktime * 4;
