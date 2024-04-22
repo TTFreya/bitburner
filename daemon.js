@@ -4,7 +4,7 @@
 export async function main(ns) {
     await ns.getPortHandle(1); // This is the port that links to hwgw-batch. Not sure if this is needed.   
     
-    for (i = 0; i < 255; i++) {
+    for (let i = 1; i < 255; i++) {
       await ns.clearPort(i)
     }// 255 is an arbitrary number until I can figure out how to fetch all used ports
     
