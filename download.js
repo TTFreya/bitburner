@@ -17,7 +17,7 @@ export async function main(ns) {
   if (filesImported) {
     ns.tprint('SUCCESS: Scripts have been downloaded.');
     ns.tprint(`INFO: You've installed these in the ${folder} directory.`);
-    ns.tprint(`INFO: \`Run /${folder}/daemon.js\``); // Fix a text error here
+    ns.tprint(`INFO: \'Run /${folder}/daemon.js\``); // Fix a text error here, replace with apostrophes at your own peril
   } else {
     ns.tprint('ERROR:File download failed.');
   }
