@@ -9,6 +9,8 @@ export async function main(ns) {
     "hwgw.js",
     "daemon.js"];
 
+  ns.tail(); 
+  
   let filesImported = true;
   for (let file of files) {
     const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
