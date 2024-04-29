@@ -1,5 +1,6 @@
 export async function main(ns) {
   const gray = '\x1b[37m'
+  const reset = "\u001b[0m"
   const { rootUrl } = ns.flags([['rootUrl', 'https://raw.githubusercontent.com/TTFreya/bitburner/main/']]);
   const folder = 'scripts';
   const files = [
