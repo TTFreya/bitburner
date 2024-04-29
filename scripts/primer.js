@@ -30,6 +30,6 @@ export async function main(ns) {
             }
         }
         ns.writePort(3, JSON.stringify(server[i]));
-        ns.exec("hwgw.js", "home");
+        ns.exec("scripts/hwgw.js", "home");
     }
 }

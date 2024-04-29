@@ -7,7 +7,7 @@ export async function main(ns) {
         knownservers.push(...ns.scan(knownservers[i]).filter(server => !knownservers.includes(server) && !knownservers.includes("RAM")));
     } // The above script needs to be added onto to include optimal targeting when possible, but that isn't the priority right now.
     await ns.writePort(2, JSON.stringify(knownservers));
-    await ns.exec("primer.js", "home");
+    await ns.exec("scripts/primer.js", "home");
 }
 
 // port.write(JSON.stringify(array))
