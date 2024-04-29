@@ -5,7 +5,9 @@ export async function main(ns) {
     "fetchservers.js",
     "primer.js",
     "hwgw.js",
-    "daemon.js"];
+    "daemon.js"
+    ];
+
   let filesImported = true;
   for (let file of files) {
     const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
@@ -13,6 +15,7 @@ export async function main(ns) {
     filesImported = filesImported && result;
     ns.tprint(`File: ${file}: ${result ? '✔️' : '❌'}`);
   }
+
   ns.tprint('='.repeat(20));
   if (filesImported) {
     ns.tprint('SUCCESS: Scripts have been downloaded.');
