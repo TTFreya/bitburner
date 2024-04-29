@@ -20,10 +20,10 @@ export async function main(ns) {
     ns.tprint('='.repeat(20));
     
     if (filesImported) {
-        ns.tprint('Scripts have been downloaded.');
-        ns.tprint(`You've installed these in the ${folder} directory.`);
-        ns.tprint(`\`Run /${folder}/daemon.js\``);
+        ns.tprint('SUCCESS: Scripts have been downloaded.');
+        ns.tprint(`INFO: You've installed these in the ${folder} directory.`);
+        ns.tprint(`INFO: \`Run /${folder}/daemon.js\``);
     } else {
-        ns.tprint('File download failed.');
+        ns.tprint('ERROR: File download failed.');
     }
 }
