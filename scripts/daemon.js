@@ -17,7 +17,7 @@ export async function main(ns) {
     if (await ns.readPort(1) == "NULL PORT DATA"); {
       // Import server code here
       await ns.writePort(1, "1") // Not sure if this is needed, just want to avoid an infinite loop.
-      ns.exec("fetchservers.js", "home");
+      ns.exec("scripts/fetchservers.js", "home");
     }
   
   
