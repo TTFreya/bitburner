@@ -15,7 +15,7 @@ export async function main(ns) {
     const result = await ns.rm(removee);
     filesDeleted = filesDeleted && result
     // Update this to check for only outdated files rather than axing everything in /scripts/*
-    ns.print(`${gray}Clearing Outdated File: ${file}: ${result ? '✔️' : '✗'}${reset}`);
+    ns.print(`${gray}Clearing Outdated File: ${file}: ${result ? '✓' : '✗'}${reset}`);
   }
 
   if (filesDeleted) {
