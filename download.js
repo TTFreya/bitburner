@@ -8,21 +8,21 @@ export async function main(ns) {
     "primer.js",
     "hwgw.js",
     "daemon.js"];
-
+  ns.tail();
   let filesImported = true;
   for (let file of files) {
     const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
     const result = await ns.wget(remoteFileName, `/${folder}/${file}`);
     filesImported = filesImported && result;
-    ns.tprint(`${gray}File: ${file}: ${result ? '✔️' : '❌'}${reset}`);
+    ns.print(`${gray}File: ${file}: ${result ? '✔️' : '❌'}${reset}`);
   }
 
   ns.tprint('='.repeat(20));
   if (filesImported) {
-    ns.tprint('SUCCESS: Scripts have been downloaded.');
-    ns.tprint(`INFO: You've installed these in the ${folder} directory.`);
-    ns.tprint(`INFO: \'Run /${folder}/daemon.js\``); // Fix a text error here, replace with apostrophes at your own peril
+    ns.print('SUCCESS: Scripts have been downloaded.');
+    ns.print(`INFO: You've installed these in the ${folder} directory.`);
+    ns.print(`INFO: \'Run /${folder}/daemon.js\``); // Fix a text error here, replace with apostrophes at your own peril
   } else {
-    ns.tprint('ERROR:File download failed.');
+    ns.print('ERROR:File download failed.');
   }
 }
