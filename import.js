@@ -1,5 +1,5 @@
 export async function main(ns) {
-  const folder = 'scripts';
+  const gray = '\x1b[37m'
   const files = [
     "fetchservers.js", // Throwing an error with assertion? Sometimes?
     "primer.js",
@@ -11,7 +11,7 @@ export async function main(ns) {
     const result = await ns.rm(removee);
     filesDeleted = filesDeleted && result
     // Update this to check for only outdated files rather than axing everything in /scripts/*
-    ns.tprint(`Clearing Outdated File: ${file}: ${result ? '✔️' : '❌'}`);
+    ns.tprint(`${gray}Clearing Outdated File: ${file}: ${result ? '✔️' : '❌'}${reset}`);
   }
 
   if (filesDeleted) {
