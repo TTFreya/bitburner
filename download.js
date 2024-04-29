@@ -8,7 +8,7 @@ export async function main(ns) {
     "primer.js",
     "hwgw.js",
     "daemon.js"];
-  ns.tail();
+
   let filesImported = true;
   for (let file of files) {
     const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
@@ -17,7 +17,7 @@ export async function main(ns) {
     ns.print(`${gray}File: ${file}: ${result ? '✔️' : '❌'}${reset}`);
   }
 
-  ns.tprint('='.repeat(20));
+  ns.print('='.repeat(20));
   if (filesImported) {
     ns.print('SUCCESS: Scripts have been downloaded.');
     ns.print(`INFO: You've installed these in the ${folder} directory.`);
