@@ -16,7 +16,7 @@ export async function main(ns) {
     const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
     const result = await ns.wget(remoteFileName, `/${folder}/${file}`);
     filesImported = filesImported && result;
-    ns.print(`${gray}File: ${file}: ${result ? '✔️' : '❌'}${reset}`);
+    ns.print(`${gray}File: ${file}: ${result ? '✓' : '✗'}${reset}`);
   }
 
   ns.print('='.repeat(20));
