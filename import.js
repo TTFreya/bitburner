@@ -1,6 +1,6 @@
 export async function main(ns) {
   const gray = '\x1b[37m'
-  const reset = "\u001b[0m"
+  const reset = '\u001b[0m'
   const files = [
     "fetchservers.js", // Throwing an error with assertion? Sometimes?
     "primer.js",
@@ -22,12 +22,14 @@ export async function main(ns) {
     ns.print('SUCCESS: Old scripts have been cleared successfully.');
     ns.print('INFO: Attempting to download updated files from the Git Repo.');
   } else {
-    ns.print('ERROR: File clearing failed. Debug import.js');
+    ns.print(`ERROR: File clearing failed. Debug import.js if this isn't your first time running this.`);
   }
 
   ns.print('='.repeat(20));
   const rootUrl = 'https://raw.githubusercontent.com/TTFreya/bitburner/main/';
   const downloadFileName = `${rootUrl}download.js?t=${Date.now()}`;
-  await ns.wget(downloadFileName, `download.js`);
+  await ns.wget(downloadFileName, `download.js`); // How do I get wget to shut up?
   ns.run(`download.js`, 1, `--rootUrl=${rootUrl}`);
 }
+
+// Add an updater for import.js
