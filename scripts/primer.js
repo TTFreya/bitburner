@@ -2,8 +2,10 @@
 // Primes our found servers for our hwgw batch to work.
 // Prime a server, then push the name of the server to port[3].
 export async function main(ns) {
-    await ns.getPortHandle(2);
-    let server = JSON.parse(ns.readPort(2)); // This is the port that connects to fetchservers.js. Not sure if this line is needed.
+    await ns.getPortHandle(2); // This is the port that connects to fetchservers.js. Not sure if this line is needed.
+    var dataRead = ns.readPort(2);
+    var jsonStrRead = String.fromCharCode.apply(null, new Uint8Array(dataRead));  // 100% a better way to do this btw
+    var server = JSON.parse(jsonStrRead);  // 100% a better way to do this btw
     let prog = [
         "BruteSSH",
         "FTPCrack",
@@ -29,7 +31,8 @@ export async function main(ns) {
                 }
             }
         }
-        ns.writePort(3, JSON.stringify(server[i]));
+        var jsonStr = JSON.stringify(server[i]);  // 100% a better way to do this btw
+        ns.writePort(3, jsonStr);  // 100% a better way to do this btw
         ns.exec("scripts/hwgw.js", "home");
     }
 }
