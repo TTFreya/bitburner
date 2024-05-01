@@ -29,7 +29,7 @@ export async function main(ns) {
   const rootUrl = 'https://raw.githubusercontent.com/TTFreya/bitburner/main/';
   const downloadFileName = `${rootUrl}download.js?t=${Date.now()}`;
   const dljsresult = await ns.wget(downloadFileName, `download.js`); // How do I get wget to shut up?
-  ns.print(`${gray}Download.js Status:  ${dljsresult ? '✓' : '✗'}${reset}`);
+  ns.print(`${gray}File: download.js: ${dljsresult ? '✓' : '✗'}${reset}`);
   ns.run(`download.js`, 1, `--rootUrl=${rootUrl}`);
 }
 
