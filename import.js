@@ -25,7 +25,7 @@ export async function main(ns) {
     ns.print(`ERROR: File clearing failed. Debug import.js if this isn't your first time running this.`);
   }
 
-  ns.print('${gray}='.repeat(20));
+  ns.print(${gray}'='.repeat(20));
   const rootUrl = 'https://raw.githubusercontent.com/TTFreya/bitburner/main/';
   const downloadFileName = `${rootUrl}download.js?t=${Date.now()}`;
   const dljsresult = await ns.wget(downloadFileName, `download.js`); // How do I get wget to shut up?
