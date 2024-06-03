@@ -7,17 +7,20 @@ export async function main(ns) {
       "fetchservers.js",
       "primer.js",
       "hwgw.js",
-      "daemon.js"];
-    const shutup = [
-      "wget",
-      "disableLog"
+      "daemon.js"
     ];
-  
-    ns.tail(); 
-    for (let command of shutup) {
-      ns.disableLog(command);
+    const shutup = [
+      "disableLog",
+      "wget",
+    ]
+    function separate() {
+      ns.print(`${gray}=`.repeat(50));
     }
-  
+    ns.tail();
+    for (let command of shutup) {
+      ns.disableLog(command)
+    }
+    separate();
     let filesImported = true;
     for (let file of files) {
       const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
@@ -25,14 +28,14 @@ export async function main(ns) {
       filesImported = filesImported && result;
       ns.print(`${gray}File: ${file}: ${result ? '✓' : '✗'}${reset}`);
     }
-  
-    ns.print(`${gray}=`.repeat(50));
+    separate();
     if (filesImported) {
-      ns.print('SUCCESS: Scripts have been downloaded.');
-      ns.print(`INFO: You've installed these in the ${folder} directory.`);
-      ns.print(`INFO: \'Run /${folder}/daemon.js\``); // Fix a text error here, replace with apostrophes at your own peril
+      ns.print(`${gray}SUCCESS: Scripts have been downloaded.`);
+      ns.print(`${gray}INFO: You've installed these in the ${folder} directory.`);
+      ns.print(`${gray}INFO: \Run /${folder}/daemon.js\``); // Fix a text error here, replace with apostrophes at your own peril
     } else {
-      ns.print('ERROR:File download failed.');
+      ns.print(`${gray}ERROR:File download failed.`);
     }
+    separate();
   }
   
