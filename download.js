@@ -32,7 +32,7 @@ export async function main(ns) {
     if (filesImported) {
       ns.print(`${gray}SUCCESS: Scripts have been downloaded.`);
       ns.print(`${gray}INFO: You've installed these in the ${folder} directory.`);
-      ns.print(`${gray}INFO: \Run /${folder}/daemon.js\``);
+      ns.print(`${gray}INFO: Run /${folder}/daemon.js`);
     } else {
       ns.print(`${gray}ERROR:File download failed.`);
     }
