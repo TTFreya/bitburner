@@ -9,22 +9,22 @@ export async function main(ns) {
       "hwgw.js",
       "daemon.js"
     ];
-    const shutup = [
+    const shutup = [ // kudos Hydrogenious
       "disableLog",
       "wget",
     ]
+    for (let command of shutup) {
+      ns.disableLog(command)
+    }
     function separate() {
       ns.print(`${gray}=`.repeat(50));
     }
     ns.tail();
-    for (let command of shutup) {
-      ns.disableLog(command)
-    }
     separate();
     let filesImported = true;
     for (let file of files) {
       const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
-      const result = await ns.wget(remoteFileName, `/${folder}/${file}`); // ty Hydrogenious in the Bitburner `cord for telling me how to shut up wget
+      const result = await ns.wget(remoteFileName, `/${folder}/${file}`);
       filesImported = filesImported && result;
       ns.print(`${gray}File: ${file}: ${result ? '✓' : '✗'}${reset}`);
     }
@@ -32,7 +32,7 @@ export async function main(ns) {
     if (filesImported) {
       ns.print(`${gray}SUCCESS: Scripts have been downloaded.`);
       ns.print(`${gray}INFO: You've installed these in the ${folder} directory.`);
-      ns.print(`${gray}INFO: \Run /${folder}/daemon.js\``); // Fix a text error here, replace with apostrophes at your own peril
+      ns.print(`${gray}INFO: \Run /${folder}/daemon.js\``);
     } else {
       ns.print(`${gray}ERROR:File download failed.`);
     }

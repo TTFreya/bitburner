@@ -4,9 +4,9 @@ export async function main(ns) {
     await ns.getPortHandle(1); // This port connects to daemon.js. Not sure if this is line needed.
     await ns.getPortHandle(2); // This port connects to fetchservers.js. Not sure if this line is needed.
     await ns.getPortHandle(3); // This port connects to primer.js. Not sure if this line is needed.
-    var dataRead = ns.readPort(3);
-    var jsonStrRead = String.fromCharCode.apply(null, new Uint8Array(dataRead));
-    let server = JSON.parse(jsonStrRead);
+    var dataRead = ns.readPort(3); // Needs Fixing
+    var jsonStrRead = String.fromCharCode.apply(null, new Uint8Array(dataRead)); // Needs Fixing
+    let server = JSON.parse(jsonStrRead); // Needs Fixing
     for (let i = 0; i < server.length; i++) {
             let hacktime = ns.getHackTime(server[i]);
             let growtime = hacktime * 3.2;

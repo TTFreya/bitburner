@@ -7,14 +7,20 @@ export async function main(ns) {
     "hwgw.js",
     "daemon.js"];
   let filesDeleted = true
-  
+  const shutup = [
+    "disableLog",
+    "wget",
+  ]
+  for (let command of shutup) { // kudos Hydrogenious
+    ns.disableLog(command)
+  }
   ns.tail();
 
   for (let file of files) {
     const removee = `scripts/${file}`
     const result = await ns.rm(removee);
     filesDeleted = filesDeleted && result
-    // Update this to check for only outdated files rather than axing everything in /scripts/*
+    // TODO: Update this to check for only outdated files rather than axing everything in /scripts/*
     ns.print(`${gray}Clearing Outdated File: ${file}: ${result ? '✓' : '✗'}${reset}`);
   }
 
@@ -28,7 +34,7 @@ export async function main(ns) {
   ns.print('='.repeat(20));
   const rootUrl = 'https://raw.githubusercontent.com/TTFreya/bitburner/main/';
   const downloadFileName = `${rootUrl}download.js?t=${Date.now()}`;
-  const dljsresult = await ns.wget(downloadFileName, `download.js`); // How do I get wget to shut up?
+  const dljsresult = await ns.wget(downloadFileName, `download.js`);
   ns.print(`${gray}Downloading File: download.js: ${dljsresult ? '✓' : '✗'}${reset}`);
   ns.run(`download.js`, 1, `--rootUrl=${rootUrl}`);
 }
