@@ -8,18 +8,24 @@ export async function main(ns) {
     "primer.js",
     "hwgw.js",
     "daemon.js"];
+  const shutub = [
+    "wget",
+  ]
 
   ns.tail(); 
+  for (let command of stfu) {
+    ns.disableLog(command)
+  }
   
   let filesImported = true;
   for (let file of files) {
     const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
-    const result = await ns.wget(remoteFileName, `/${folder}/${file}`); // How do I get wget to shut up?
+    const result = await ns.wget(remoteFileName, `/${folder}/${file}`); // ty Hydrogenious in the Bitburner `cord for telling me how to shut up wget
     filesImported = filesImported && result;
     ns.print(`${gray}File: ${file}: ${result ? '✓' : '✗'}${reset}`);
   }
 
-  ns.print('='.repeat(20));
+  ns.print(`${gray}=`.repeat(50));
   if (filesImported) {
     ns.print('SUCCESS: Scripts have been downloaded.');
     ns.print(`INFO: You've installed these in the ${folder} directory.`);
