@@ -2,6 +2,7 @@
 // Daemon.
 
 export async function main(ns) {
+    ns.tail();
     await ns.getPortHandle(1); // This is the port that links to hwgw-batch. Not sure if this is needed.   
     
     for (let i = 1; i < 255; i++) {

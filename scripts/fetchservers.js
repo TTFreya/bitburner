@@ -1,6 +1,7 @@
 /** @param {NS} ns */
 // Broadcasts every non-purchased server we can find to port[2]
 export async function main(ns) {
+    ns.tail();
     await ns.getPortHandle(2); // This is the port that broadcasts the known server array to other documents. Used by: primer.js.
     let knownservers = ['home']; // kudos Cald
     for (let i = 0; i < knownservers.length; i++) {

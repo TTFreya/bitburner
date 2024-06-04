@@ -1,6 +1,7 @@
 /** @param {NS} ns */
 // Our HWGW batch.
 export async function main(ns) {
+    ns.tail();
     await ns.getPortHandle(1); // This port connects to daemon.js. Not sure if this is line needed.
     await ns.getPortHandle(2); // This port connects to fetchservers.js. Not sure if this line is needed.
     await ns.getPortHandle(3); // This port connects to primer.js. Not sure if this line is needed.
