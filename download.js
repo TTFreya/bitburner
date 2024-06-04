@@ -37,5 +37,6 @@ export async function main(ns) {
       ns.print(`${gray}ERROR:File download failed.`);
     }
     separate();
+    await ns.closeTail();
   }
   
