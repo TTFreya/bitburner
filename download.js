@@ -1,3 +1,4 @@
+/** @param {NS} ns */
 export async function main(ns) {
     const gray = '\x1b[37m'
     const reset = "\u001b[0m"
