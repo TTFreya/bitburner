@@ -34,13 +34,18 @@ export async function main(ns) {
                 if (ns.fileExists(prog[j] - "()" + ".exe")) {
                     nukeprog++
                     progfunc[j](server[i]);
-                }
-                if (ns.getServerNumberPortsRequired(server[i]) > nukeprog) {
+                } 
+                if (nukeprog >= ns.getServerNumPortsRequired(server[i])) {
+                    if (ns.fileExists(prog[5]) - "()" + ".exe") {
+                        progfunc[5](server[i]);
+                    }
+                } else {
                     isbreaking = True
                     break;
                 }
             }
         }
+        nukeprog = 0
         if (isbreaking = False) {
             var jsonStr = JSON.stringify(server[i]); // Needs Fixing
             ns.writePort(3, jsonStr);  // Needs Fixing
@@ -53,9 +58,12 @@ export async function main(ns) {
 
 // ! OVERSIGHT !
 // 
-// The script pushes servers to port 3 regardless of whether or not they can be backdoored / hacked with the number of ports opened.
+// The script pushes servers to port regardless of whether or not they can be backdoored / hacked with the number of ports opened.
 //
 // ! OVERSIGHT !
+//
+//
+//
 // ! DEBUGGING !
 //
 // SYNTAX ERROR
