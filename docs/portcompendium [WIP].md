@@ -1,0 +1,5 @@
+1: hwgw.js -> daemon.js, used to restrict the daemon to only starting / maintaining the loops when it's needed. 
+  NULL: Initial condition and condition to which the port is briefly reset after recieving the signal from hwgw. (Works?)
+  1: Daemon has initialized the chain and is awaiting a repsonse from the end of the chain (hwgw) (Works)
+  2: hwgw is finished, and daemon resets the port, restarting the loop (Untested)
+2: fetchservers.js -> Pushes the name of every unique, non-player-bought (these servers should be prefixed with / include RAM) server that fetchservers finds to 
