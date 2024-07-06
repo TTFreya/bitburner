@@ -6,7 +6,7 @@ export async function main(ns) {
         await ns.getPortHandle(2); // This port connects to fetchservers.js. Not sure if this line is needed.
         await ns.getPortHandle(3); // This port connects to primer.js. Not sure if this line is needed.
         var dataRead = ns.readPort(3); // Needs Fixing
-        var jsonStrRead = String.fromCharCode.apply(null, new Uint8Array(dataRead)); // Needs Fixing
+        //var jsonStrRead = String.fromCharCode.apply(null, new Uint8Array(dataRead)); // Needs Fixing
         let server = JSON.parse(jsonStrRead); // Needs Fixing
         for (let i = 0; i < server.length; i++) {
                 let hacktime = ns.getHackTime(server[i]);

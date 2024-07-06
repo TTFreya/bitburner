@@ -5,11 +5,7 @@ export async function main(ns) {
     ns.tail();
     await ns.getPortHandle(2); // This is the port that connects to fetchservers.js.
     var dataRead = ns.readPort(2);
-    ns.print("dataRead defined as: ", dataRead);
-    var jsonStrRead = String.fromCharCode.apply(null, new Uint8Array(dataRead)); // ! ERROR IS HERE !
-    ns.print("jsonStrRead defined as: ", jsonStrRead);
-    var server = JSON.parse(jsonStrRead); 
-    ns.print("server defined as: ", server);
+    var server = JSON.parse(dataRead); 
     let prog = [
         "BruteSSH",
         "FTPCrack",
@@ -27,7 +23,7 @@ export async function main(ns) {
         ns.nuke
     ];
     let nukeprog = 0
-    let isbreaking = False
+    let isbreaking = 0
     for (let i = 0; i < server.length; i++) {
         if (ns.getServerRequiredHackingLevel(server[i]) <= ns.getHackingLevel()) {
             for (let j = 0; j < (prog.length) - 1; j++) {
@@ -40,18 +36,19 @@ export async function main(ns) {
                         progfunc[5](server[i]);
                     }
                 } else {
-                    isbreaking = True
+                    isbreaking = 1
                     break;
                 }
             }
         }
         nukeprog = 0
-        if (isbreaking = False) {
-            var jsonStr = JSON.stringify(server[i]); // Needs Fixing
-            ns.writePort(3, jsonStr);  // Needs Fixing
+        if (isbreaking = 0) {
+            var jsonStr = JSON.stringify(server[i]);
+            ns.print(server[i], ' primed successfully. [✓]')
+            ns.writePort(3, jsonStr);
             ns.exec("scripts/hwgw.js", "home");
         } else {
-            break;
+            ns.print(server[i], ' prime failed. Moving on. [X]')
         }
     }
 }
@@ -60,15 +57,4 @@ export async function main(ns) {
 // 
 // The script pushes servers to port regardless of whether or not they can be backdoored / hacked with the number of ports opened.
 //
-// ! OVERSIGHT !
-//
-//
-//
-// ! DEBUGGING !
-//
-// SYNTAX ERROR
-// scripts/primer.js@home (PID - 6)
-//
-// Unexpected end of JSON input (sorry we can't be more helpful)
-//
-// ! DEBUGGING !
+// ! --------- !
