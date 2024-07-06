@@ -52,9 +52,3 @@ export async function main(ns) {
         }
     }
 }
-
-// ! OVERSIGHT !
-// 
-// The script pushes servers to port regardless of whether or not they can be backdoored / hacked with the number of ports opened.
-//
-// ! --------- !
