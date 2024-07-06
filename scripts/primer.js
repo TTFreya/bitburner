@@ -51,4 +51,5 @@ export async function main(ns) {
             ns.print(server[i], ' prime failed. Moving on. [X]')
         }
     }
+    ns.exec("scripts/hwgw.js", "home");
 }
