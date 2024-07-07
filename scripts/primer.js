@@ -2,6 +2,15 @@
 // Primes our found servers for our hwgw batch to work.
 // Prime a server, then push the name of the server to port[3] [if it can be hacked].
 export async function main(ns) {
+    const shutup = [ // kudos Hydrogenious
+        "disableLog",
+        "getServerRequiredHackingLevel",
+        "getHackingLevel",
+        "getServerNumPortsRequired"
+      ]
+      for (let command of shutup) {
+        ns.disableLog(command)
+      }
     ns.tail();
     await ns.getPortHandle(2); // This is the port that connects to fetchservers.js.
     var dataRead = ns.readPort(2);
