@@ -19,6 +19,7 @@ export async function main(ns) {
       // Import server code here
       await ns.writePort(1, "1") 
       ns.exec("scripts/fetchservers.js", "home");
+      await ns.closeTail();
     }
   
   

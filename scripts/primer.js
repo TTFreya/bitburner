@@ -61,4 +61,5 @@ export async function main(ns) {
         }
     }
     ns.exec("scripts/hwgw.js", "home");
+    await ns.closeTail();
 }

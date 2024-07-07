@@ -22,5 +22,6 @@ export async function main(ns) {
         
         }
         await ns.writePort(1, "2");
+        await ns.closeTail();
       }
     

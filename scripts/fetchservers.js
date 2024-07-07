@@ -10,6 +10,7 @@ export async function main(ns) {
     let jsonSTR = JSON.stringify(knownservers);
     await ns.writePort(2, jsonSTR); 
     await ns.exec("scripts/primer.js", "home");
+    await ns.closeTail();
 }
 
 // port.write(JSON.stringify(array))
