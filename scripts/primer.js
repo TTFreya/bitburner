@@ -55,7 +55,6 @@ export async function main(ns) {
             var jsonStr = JSON.stringify(server[i]);
             ns.print(server[i], ' primed successfully. [✓]')
             ns.writePort(3, jsonStr);
-            ns.exec("scripts/hwgw.js", "home");
         } else {
             ns.print(server[i], ' prime failed. Moving on. [X]')
         }

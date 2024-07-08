@@ -5,7 +5,7 @@ export async function main(ns) {
     await ns.getPortHandle(2); // This is the port that broadcasts the known server array to other documents. Used by: primer.js.
     let knownservers = ['home']; // kudos Cald
     for (let i = 0; i < knownservers.length; i++) {
-        knownservers.push(...ns.scan(knownservers[i]).filter(server => !knownservers.includes(server) && !knownservers.includes("RAM")));
+        knownservers.push(...ns.scan(knownservers[i]).filter(server => !knownservers.includes(server) && !knownservers.includes("RAM"))); // My server buy script will ideally label the RAM amount of bought servers
     } // The above script needs to be added onto to include optimal targeting when possible, but that isn't the priority right now.
     let jsonSTR = JSON.stringify(knownservers);
     await ns.writePort(2, jsonSTR); 
