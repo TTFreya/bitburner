@@ -34,8 +34,10 @@ export async function main(ns) {
       ns.print(`${gray}SUCCESS: Scripts have been downloaded.`);
       ns.print(`${gray}INFO: You've installed these in the ${folder} directory.`);
       ns.print(`${gray}INFO: Run /${folder}/daemon.js`);
+      ns.toast("Online import of files completed!");
     } else {
       ns.print(`${gray}ERROR:File download failed.`);
+      ns.toast("Online import of files failed!", error);
     }
     separate();
     await ns.closeTail();

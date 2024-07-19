@@ -48,6 +48,7 @@ export async function main(ns) {
   ns.print(`${gray}Download.js executed successfully. See ya!`)
   separate();
   await ns.closeTail();
+  ns.toast("Online import of download.js completed!")
 }
 
 // Add an updater for import.js
