@@ -13,7 +13,7 @@ export async function main(ns) {
     
     if (await ns.readport(1) == "ERROR")
         await ns.writePort(1, "DEBUG-SHUTDOWN")
-        // Print a failure declaration
+        ns.print("Failed, shutting down.")
         stop(); 
   
     if (await ns.readPort(1) == "2"); {

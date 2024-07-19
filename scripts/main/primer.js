@@ -57,14 +57,16 @@ export async function main(ns) {
         }
       }
       nukeprog = 0
-    // if peeking port 2 actually shows something...
-      // declare success
+    if (ns.peek(2) != "NULL PORT DATA") {
+      ns.print("Prime parsing success (or false positives but shut up)!")
       ns.exec("scripts/main/hwgw.js", "home");
-    // else...
-      // declare failure
+    }
+    else {
+      ns.print("Prime parsing failed. You should be able to hack SOMETHING, please debug.")
       ns.writePort(1, "ERROR");
       ns.exec("scripts/main/daemon.js", "home");
       
     await ns.closeTail();
+    }
     }
   }
