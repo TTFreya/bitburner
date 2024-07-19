@@ -36,7 +36,6 @@ export async function main(ns) {
   
     for (let i = 0; i < server.length; i++) {
       let nukeprog = 0
-      let isbreaking = 0
       if (ns.getServerRequiredHackingLevel(server[i]) <= ns.getHackingLevel()) {
         for (let j = 0; j < (prog.length) - 1; j++) {
           if (ns.fileExists(prog[j] + ".exe")) {
@@ -58,7 +57,14 @@ export async function main(ns) {
         }
       }
       nukeprog = 0
-    ns.exec("scripts/hwgw.js", "home");
+    // if peeking port 2 actually shows something...
+      // declare success
+      ns.exec("scripts/main/hwgw.js", "home");
+    // else...
+      // declare failure
+      ns.writePort(1, "ERROR");
+      ns.exec("scripts/main/daemon.js", "home");
+      
     await ns.closeTail();
     }
   }

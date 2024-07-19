@@ -24,7 +24,7 @@ export async function main(ns) {
     separate();
     let filesImported = true;
     for (let file of files) {
-      const remoteFileName = `${rootUrl}scripts/${file}?t=${Date.now()}`;
+      const remoteFileName = `${rootUrl}scripts/main/${file}?t=${Date.now()}`;
       const result = await ns.wget(remoteFileName, `/${folder}/${file}`);
       filesImported = filesImported && result;
       ns.print(`${gray}File: ${file}: ${result ? '✓' : '✗'}${reset}`);
