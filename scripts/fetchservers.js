@@ -9,7 +9,7 @@ export async function main(ns) {
     } // The above script needs to be added onto to include optimal targeting when possible, but that isn't the priority right now.
     let jsonSTR = JSON.stringify(knownservers);
     await ns.writePort(2, jsonSTR); 
-    await ns.exec("scripts/primer.js", "home");
+    ns.exec("scripts/primer.js", "home");
     await ns.closeTail();
 }
 
