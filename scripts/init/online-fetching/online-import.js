@@ -39,7 +39,7 @@ export async function main(ns) {
   }
 
 
-  const rootUrl = 'https://raw.githubusercontent.com/TTFreya/bitburner/main/';
+  const rootUrl = 'https://raw.githubusercontent.com/TTFreya/bitburner/scripts/init/online-fetching/';
   const downloadFileName = `${rootUrl}download.js?t=${Date.now()}`;
   const dljsresult = await ns.wget(downloadFileName, `download.js`);
   ns.print(`${gray}Downloading File: download.js: ${dljsresult ? '✓' : '✗'}${reset}`);
