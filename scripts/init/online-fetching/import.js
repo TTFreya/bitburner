@@ -24,7 +24,7 @@ export async function main(ns) {
   ns.tail();
   separate();
   for (let file of files) {
-    const removee = `scripts/main/${file}`
+    const removee = `scripts/${file}`
     const result = await ns.rm(removee);
     filesDeleted = filesDeleted && result
     // TODO: Update this to check for only outdated files rather than axing everything in /scripts/*
